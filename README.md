@@ -79,7 +79,7 @@ npm install
 ## Demo
 
 See the [open issues](https://github.com/VikaVP/angular-employee-app/issues) for a list of proposed features (and known issues).
-[Click Here to go to Demo website on netlify](https://my-books-bay.vercel.app/)
+[Click Here to go to Demo website on vercel](https://angular-employee-app-24l5.vercel.app//)
 
 ## Login App
 
