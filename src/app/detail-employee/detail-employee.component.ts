@@ -38,10 +38,10 @@ export class DetailEmployeeComponent {
       next: (_value) => {
         this.route.paramMap
           .subscribe(
-            param => {
-              const detailData: any = this.groupDatas.getDetailData(Number(param.get('id')))
+            async param => {
+              const detailData: any = await this.groupDatas.getDetailData(Number(param.get('id')))
               if(detailData){
-                this.groupData.map((group: any, i: number) => {
+                _value.map((group: any, i: number) => {
                   +group.id === +detailData.group && (detailData.group_name = group.name)
                 })
                 detailData.basicSalary = this.currencyFormat(detailData.basicSalary)

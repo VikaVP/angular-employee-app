@@ -27,7 +27,7 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Demo](#demo)
+- [Login App](#login-app)
 - [Contact](#contact)
 
 
@@ -73,13 +73,6 @@ git clone https://github.com/VikaVP/angular-employee-app.git
 ```sh
 npm install
 ```
-
-<!-- DEM0 -->
-
-## Demo
-
-See the [open issues](https://github.com/VikaVP/angular-employee-app/issues) for a list of proposed features (and known issues).
-[Click Here to go to Demo website on vercel](https://angular-employee-app-24l5.vercel.app//)
 
 ## Login App
 

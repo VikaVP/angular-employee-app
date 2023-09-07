@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import {
   Datatable,
   Popconfirm,
@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
   employeeData: Datas | null | undefined;
@@ -28,10 +29,10 @@ export class HomeComponent {
 
   constructor(
     private datas: EmployeeService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     this.nowSearch = localStorage.getItem('search');
-    this.datas.dataObservable.subscribe((res) => this.employeeData = res);
   }
 
   ngAfterViewInit() {
@@ -99,7 +100,6 @@ export class HomeComponent {
             </button>`
             return row;
           })
-          
         })
 
       return generated;
@@ -108,10 +108,22 @@ export class HomeComponent {
   ngOnInit() {
     initTE({ Datatable, Tooltip,});
 
-    if(!this.employeeData){
-      this.getAll()
-    } else {
-      let customData = this.generateCustomAction(this.employeeData);
+    this.getAll()
+    this.datas.dataObservable.subscribe(
+      data => {
+        this.employeeData = data
+        data && this.generateDatatable()
+        this.cdr.markForCheck();
+      },
+      err => {
+          console.log(err, 'err')
+      },
+      () => {}
+    );
+  }
+
+  generateDatatable() {
+    let customData = this.generateCustomAction(this.employeeData);
       const data = {
         columns: [
           {
@@ -154,10 +166,11 @@ export class HomeComponent {
         rows: customData || []
       };
 
-      const instance = new Datatable(document.getElementById('datatable'), data);
+      const datatable= document.getElementById('datatable');
+
+      const instance = !datatable?.hasChildNodes() && new Datatable(document.getElementById('datatable'), data);
       const advancedSearchInput: any = document.getElementById('advanced-search-input');
       const searchButton = document.getElementById("advanced-search-button");
-      const datatable= document.getElementById('datatable');
 
       datatable?.addEventListener('render.te.datatable', (e) => {
         action()
@@ -225,7 +238,6 @@ export class HomeComponent {
       if(this.nowSearch){
         search(this.nowSearch)
       }
-    }
   }
 
   openAdd($event: Event){
