@@ -1,0 +1,42 @@
+[
+    {
+        "name": "HR",
+        "id": 1
+    },
+    {
+        "name": "Sales",
+        "id": 2
+    },
+    {
+        "name": "Marketing",
+        "id": 3
+    },
+    {
+        "name": "General Affair",
+        "id": 4
+    },
+    {
+        "name": "IT Support",
+        "id": 5
+    },
+    {
+        "name": "Software Engineer",
+        "id": 6
+    },
+    {
+        "name": "Technology Services",
+        "id": 7
+    },
+    {
+        "name": "Admin Warehouse",
+        "id": 8
+    },
+    {
+        "name": "Graphic Designer",
+        "id": 9
+    },
+    {
+        "name": "Bussiness Development",
+        "id": 10
+    }
+]

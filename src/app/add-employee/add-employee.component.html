@@ -1,0 +1,118 @@
+<app-alert *ngIf="showAlert" [color]="alertColor">
+    {{ alertMsg }}
+</app-alert>
+<div class="min-w-[100%] min-h-full flex align-center justify-center mt-6 mb-6">
+    <div
+    class="block md:w-2/5 w-full rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+        <form [formGroup]="addForm" (ngSubmit)="add()">
+            <h4 class="mb-6 mt-0 text-2xl font-medium leading-tight text-info text-center">
+                ADD EMPLOYEE
+            </h4>
+            <!-- Username -->
+            <div class="mb-6" data-te-input-wrapper-init>
+                <label
+                class="pointer-events-none left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    for="exampleInput90"
+                    >Username
+                </label>
+                <app-input [control]="username" name="username" placeholder="Enter Username" type="text"></app-input>
+            </div>
+            <!-- First Name -->
+            <div class=" mb-6" data-te-input-wrapper-init>
+                <label
+                    for="exampleInput90"
+                    class="pointer-events-none left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >First Name
+                </label>
+                <app-input [control]="firstName" name="firstName" placeholder="Enter First Name" type="text"></app-input>
+            </div>
+            <!-- Last Name -->
+            <div class=" mb-6" data-te-input-wrapper-init>
+                <label
+                    for="exampleInput90"
+                    class="pointer-events-none left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >Last Name
+                </label>
+                <app-input [control]="lastName" name="lastName" placeholder="Enter Last Name" type="text"></app-input>
+            </div>
+
+            <!--Email input-->
+            <div class=" mb-6" data-te-input-wrapper-init>
+                <label
+                    for="exampleInput91"
+                    class="pointer-events-none left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >Email address
+                </label>
+                <app-input [control]="email" name="email" placeholder="Enter Email" type="email"></app-input>
+            </div>
+            <!-- Birth Date -->
+            <div class="relative mb-6" data-te-input-wrapper-init data-te-datepicker-init id="datepicker-with-limits">
+                <app-input [control]="birthDate" name="birthDate" placeholder="Enter Birth Date" type="text"></app-input>
+            </div>
+            <!-- Basic Salary -->
+            <div class=" mb-6" data-te-input-wrapper-init>
+                <label
+                    for="exampleInput90"
+                    class="pointer-events-none left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >Basic Salary
+                </label>
+                <app-input [control]="basicSalary" name="basicSalary" placeholder="Enter Basic Salary" type="number"></app-input>
+            </div>
+            <!-- Status -->
+            <div class=" mb-6" data-te-input-wrapper-init>
+                <label
+                    for="exampleInput90"
+                    class="pointer-events-none left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >Status
+                </label>
+                <select data-te-select-init data-te-select-filter="true" [formControl]="status" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline outline-cyan-300 transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
+                    <option value="">Choose One</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                </select>
+            </div>
+            <!-- Group -->
+            <div class="relative mb-6" data-te-input-wrapper-init>
+                <label
+                    for="exampleInput90"
+                    class="pointer-events-none left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >Group
+                </label>
+                <select data-te-select-init data-te-select-filter="true" [formControl]="group" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline outline-cyan-300 transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
+                    <option value="">Choose One</option>
+                    <ng-container *ngIf="groupData.length" >
+                        <option [value]="group?.id" *ngFor="let group of (groupData || [])">{{group?.name}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <!-- Description -->
+            <div class="relative mb-6" data-te-input-wrapper-init data-te-datepicker-init>
+                <app-input [control]="description" name="description" placeholder="Select Date" type="text"></app-input>
+            </div>
+
+            <div class="flex justify-between">
+                <!--Cancel button-->
+                <button
+                type="button"
+                class="mx-4 dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-secondary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-secondary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-secondary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-secondary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+                (click)="cancel()">
+                    Cancel
+                </button>
+                <!--Submit button-->
+                <button
+                type="submit"
+                class="mx-4 dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+                [disabled]="addForm.invalid || inSubmission"
+                [ngClass]="(addForm.invalid || inSubmission) ? 'pointer-events-none' : ''">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

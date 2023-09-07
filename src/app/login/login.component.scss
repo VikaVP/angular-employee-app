@@ -1,0 +1,9 @@
+:host {
+    @apply bg-gradient-to-b from-sky-400 to-sky-200;
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}

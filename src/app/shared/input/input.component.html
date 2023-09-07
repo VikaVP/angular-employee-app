@@ -1,0 +1,28 @@
+<input [formControl]="control" [type]="type"
+  class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+  [ngClass]="name === 'birthDate' ? 'outline-none' : 'outline outline-slate-200'"
+  [placeholder]="placeholder"/>
+<ng-container *ngIf="control.touched && control.dirty">
+  <small *ngIf="control.errors?.['required']"
+    class="text-red-400">
+    Field is required
+  </small>
+  <small *ngIf="control.errors?.['minlength']"
+    class="text-red-400">
+    The value you inputted is 
+    {{ control.errors?.['minlength'].actualLength }}
+    characters long.
+    It must be at least 
+    {{ control.errors?.['minlength'].requiredLength }}
+    characters long.
+  </small>
+  <small *ngIf="control.errors?.['email']" class="text-red-400">
+    You must enter a valid email.
+  </small>
+  <small *ngIf="control.errors?.['min']" class="text-red-400">
+    Value too low.
+  </small>
+  <small *ngIf="control.errors?.['max']" class="text-red-400">
+    Value too high.
+  </small>
+</ng-container>
